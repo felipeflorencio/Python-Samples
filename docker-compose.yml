@@ -1,0 +1,17 @@
+version: "3"
+
+services:
+  web:
+    build: ./web
+    # This is to be able to reload while debugging without
+    # need to reestart the docker image so you can refresh
+    # changes
+    volumes:
+      - "./web:/usr/src/app"
+    ports:
+      - "5000:5000"
+    links:
+      - db
+
+  db:
+    build: "./db"
